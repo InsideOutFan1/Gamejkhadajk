@@ -1,0 +1,120 @@
+import flash.display.MovieClip;
+import flash.events.Event;
+import flash.events.MouseEvent;
+
+class HenryStickminCompletingTheMission extends MovieClip {
+    private var currentScene:MovieClip;
+    private var currentSceneIndex:int = 0;
+    private var scenes:Array = [
+        new SceneIntro(),
+        new SceneEscape(),
+        new SceneDistraction(),
+        new SceneInfiltration(),
+        new SceneRetrievement(),
+        new SceneRecovery(),
+        new SceneEndingA(),
+        new SceneEndingB(),
+        new SceneEndingC(),
+        new SceneEndingD(),
+        new SceneEndingE()
+    ];
+
+    public function HenryStickminCompletingTheMission() {
+        addEventListener(Event.ADDED_TO_STAGE, init);
+    }
+
+    private function init(e:Event):void {
+        removeEventListener(Event.ADDED_TO_STAGE, init);
+        gotoScene(0);
+    }
+
+    private function gotoScene(index:int):void {
+        if (currentScene) {
+            currentScene.visible = false;
+            removeChild(currentScene);
+        }
+        currentSceneIndex = index;
+        currentScene = scenes[currentSceneIndex];
+        addChild(currentScene);
+        currentScene.visible = true;
+        currentScene.addEventListener(SceneEvent.NEXT_SCENE, onNextScene);
+    }
+
+    private function onNextScene(e:SceneEvent):void {
+        gotoScene(currentSceneIndex + 1);
+    }
+}
+
+class SceneEvent extends Event {
+    public static const NEXT_SCENE:String = "nextScene";
+
+    public function SceneEvent(type:String) {
+        super(type);
+    }
+}
+
+class SceneIntro extends MovieClip {
+    public function SceneIntro() {
+        // Scene Intro logic
+    }
+}
+
+class SceneEscape extends MovieClip {
+    public function SceneEscape() {
+        // Scene Escape logic
+    }
+}
+
+class SceneDistraction extends MovieClip {
+    public function SceneDistraction() {
+        // Scene Distraction logic
+    }
+}
+
+class SceneInfiltration extends MovieClip {
+    public function SceneInfiltration() {
+        // Scene Infiltration logic
+    }
+}
+
+class SceneRetrievement extends MovieClip {
+    public function SceneRetrievement() {
+        // Scene Retrieval logic
+    }
+}
+
+class SceneRecovery extends MovieClip {
+    public function SceneRecovery() {
+        // Scene Recovery logic
+    }
+}
+
+class SceneEndingA extends MovieClip {
+    public function SceneEndingA() {
+        // Scene Ending A logic
+    }
+}
+
+class SceneEndingB extends MovieClip {
+    public function SceneEndingB() {
+        // Scene Ending B logic
+    }
+}
+
+class SceneEndingC extends MovieClip {
+    public function SceneEndingC() {
+        // Scene Ending C logic
+    }
+}
+
+class SceneEndingD extends MovieClip {
+    public function SceneEndingD() {
+        // Scene Ending D logic
+    }
+}
+
+class SceneEndingE extends MovieClip {
+    public function SceneEndingE() {
+        // Scene Ending E logic
+    }
+}
